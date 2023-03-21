@@ -17,8 +17,8 @@ public class GameManager : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(spawnRate);
-            int Index = Random.Range(0, targets.Count);
-            Instantiate(target[index]);
+            int index = Random.Range(0, targets.Count);
+            Instantiate(targets[index]);
         }
     }
     // Update is called once per frame
