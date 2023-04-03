@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,21 +13,31 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI gameOverText;
     public bool isGameActive;
+    public Button restartButton;
+    public GameObject titleScreen;
     
 
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(SpawnTarget());
+        
+    }
+
+    public void StartGame(int difficulty)
+    {
         score = 0;
         UpdateScore(0);
         isGameActive = true; 
+        StartCoroutine(SpawnTarget());
+        titleScreen.gameObject.SetActive(false);
+        spawnRate /= difficulty;
     }
 
     public void GameOver()
     {
         gameOverText.gameObject.SetActive(true);
         isGameActive = false;
+        restartButton.gameObject.SetActive(true);
     }
     
 
@@ -53,6 +64,6 @@ public class GameManager : MonoBehaviour
 
     public void RestartGame()
     {
-        sceneManager.Loadscene(sceneManager.GetActiveScene().name);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
