@@ -30,8 +30,8 @@ public class GameManager : MonoBehaviour
         isGameActive = true; 
         StartCoroutine(SpawnTarget());
         titleScreen.gameObject.SetActive(false);
-        restartButton.gameObject.SetActive(false):
-        gameOverText.gameObject.SetActive(false):
+        restartButton.gameObject.SetActive(false);
+        gameOverText.gameObject.SetActive(false);
         spawnRate /= difficulty;
     }
 
